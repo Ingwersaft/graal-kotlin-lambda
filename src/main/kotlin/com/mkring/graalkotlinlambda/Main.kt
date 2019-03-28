@@ -12,7 +12,10 @@ fun main() {
     httpClient.execute(HttpGet("https://jsonplaceholder.typicode.com/todos/1")).let {
         println(it.statusLine)
         println(it.entity.s())
+        EntityUtils.consume(it.entity)
+        it.close()
     }
+    println("done")
 }
 
 private fun HttpEntity.s(): String? = EntityUtils.toString(this)
