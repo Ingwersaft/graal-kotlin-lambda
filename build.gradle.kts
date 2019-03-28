@@ -23,4 +23,6 @@ graal {
     mainClass("com.mkring.graalkotlinlambda.MainKt")
     outputName("graal-kotlin-lambda-kt")
     option("--enable-http")
+    option("--enable-url-protocols=http")
+    option("--enable-all-security-service")
 }
