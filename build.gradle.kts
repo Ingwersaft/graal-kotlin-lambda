@@ -24,5 +24,5 @@ graal {
     outputName("graal-kotlin-lambda-kt")
     option("--enable-http")
     option("--enable-url-protocols=http")
-    option("--enable-all-security-service")
+    option("-H:ReflectionConfigurationFiles=reflection.json")
 }
