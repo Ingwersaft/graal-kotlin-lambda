@@ -13,6 +13,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.apache.httpcomponents:httpclient:4.5.7")
+    implementation("com.google.code.gson:gson:2.8.5")
 }
 
 configure<JavaPluginConvention> {
