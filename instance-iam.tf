@@ -33,6 +33,11 @@ resource "aws_iam_policy" "policy" {
       "Effect": "Allow",
       "Action": ["s3:GetObject"],
       "Resource": ["${aws_s3_bucket.files.arn}/*"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["s3:PutObject"],
+      "Resource": ["${aws_s3_bucket.files.arn}/*"]
     }
   ]
 }

@@ -18,6 +18,12 @@ variable "basename" {
 output "ssh" {
   value = "ssh ec2-user@${aws_instance.build-instance.public_ip}"
 }
+output "bucket" {
+  value = "s3://${aws_s3_bucket.files.bucket}"
+}
+output "aws-s3-sync-command" {
+  value = "aws s3 sync build/dist/ s3://${aws_s3_bucket.files.bucket}"
+}
 resource "aws_s3_bucket" "files" {
   bucket = "${var.basename}"
   acl = "private"
