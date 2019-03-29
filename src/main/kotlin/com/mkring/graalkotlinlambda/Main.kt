@@ -12,6 +12,8 @@ val gson = GsonBuilder().setPrettyPrinting().serializeNulls().create()
 fun main() {
     println("hello world")
     val lambdaRuntimeApi = System.getenv("AWS_LAMBDA_RUNTIME_API")
+    println("lambdaRuntimeApi=$lambdaRuntimeApi")
+
     val httpClient = HttpClients.createDefault()
     while (true) {
         httpClient.execute(HttpGet("http://$lambdaRuntimeApi/2018-06-01/runtime/invocation/next")).also {

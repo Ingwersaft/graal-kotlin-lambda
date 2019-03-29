@@ -1,0 +1,3 @@
+#!/bin/sh
+set -euo pipefail
+./graal-kotlin-lambda-kt

@@ -28,3 +28,14 @@ graal {
     option("--enable-all-security-services")
     option("-H:ReflectionConfigurationFiles=reflection.json")
 }
+
+tasks.register<Zip>("packageLambda") {
+    archiveFileName.set("graal-lambda.zip")
+    destinationDirectory.set(file("$buildDir/dist"))
+
+    from("bootstrap")
+    from("$buildDir/graal/")
+
+    dependsOn("build", "nativeImage")
+}
+
