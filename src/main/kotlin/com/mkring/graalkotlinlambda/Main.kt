@@ -9,7 +9,7 @@ import org.apache.http.util.EntityUtils
 fun main() {
     println("hello world")
     val httpClient = HttpClients.createDefault()
-    httpClient.execute(HttpGet("https://jsonplaceholder.typicode.com/todos/1")).let {
+    httpClient.execute(HttpGet("http://jsonplaceholder.typicode.com/todos/1")).let {
         println(it.statusLine)
         println(it.entity.s())
         EntityUtils.consume(it.entity)
