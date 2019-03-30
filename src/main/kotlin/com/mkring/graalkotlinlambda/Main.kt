@@ -23,7 +23,7 @@ fun main() {
 
 //            println(gson.fromJson<Todo>(stringPayload, Todo::class.java))
 
-            val awsRequestId = it.getHeaders("Lambda-Runtime-Aws-Request-Id").first()
+            val awsRequestId = it.getHeaders("Lambda-Runtime-Aws-Request-Id").first().value
             println("awsRequestId=$awsRequestId")
             EntityUtils.consume(it.entity)
             it.close()
