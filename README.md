@@ -5,9 +5,9 @@ also used: gradle + terraform
 - [x] basic gradle setup
 - [x] terraform ec2 (for build, graalvm only works on *nix)
 - [x] graalvm task works
-- [ ] create http client for lambda runtime interface (http + json parsing)
-- [ ] implement lambda runtime interface
-- [ ] terraform lambda using graalvm image
+- [x] create http client for lambda runtime interface (http + json parsing)
+- [x] implement lambda runtime interface
+- [x] terraform lambda using graalvm image
 - [ ] replace manual ec2 build with codebuild from git repo and automatic lambda rollout
 
 ## links
