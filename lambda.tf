@@ -1,10 +1,3 @@
-data "aws_s3_bucket_object" "graal-lambda_zip" {
-  bucket = "${aws_s3_bucket.files.bucket}"
-  key = "graal-lambda.zip"
-}
-output "graal-lambda-etag" {
-  value = "${data.aws_s3_bucket_object.graal-lambda_zip.etag}"
-}
 resource "aws_lambda_function" "test_lambda" {
   s3_bucket = "${aws_s3_bucket.files.bucket}"
   s3_key = "graal-lambda.zip"
@@ -15,7 +8,6 @@ resource "aws_lambda_function" "test_lambda" {
   runtime = "provided"
   timeout = "120"
   memory_size = "256"
-  source_code_hash = "${data.aws_s3_bucket_object.graal-lambda_zip.etag}"
   tags {
     type = "${var.basename}"
   }
