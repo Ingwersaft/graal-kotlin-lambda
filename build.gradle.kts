@@ -23,9 +23,10 @@ graal {
     graalVersion("1.0.0-rc14")
     mainClass("com.mkring.graalkotlinlambda.MainKt")
     outputName("graal-kotlin-lambda-kt")
-    option("--enable-http")
     option("--enable-url-protocols=http")
+    option("-Djava.net.preferIPv4Stack=true")
     option("--enable-all-security-services")
+    option("--no-server")
     option("-H:ReflectionConfigurationFiles=reflection.json")
 }
 

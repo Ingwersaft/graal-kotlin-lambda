@@ -15,6 +15,9 @@ resource "aws_iam_role" "role" {
   ]
 }
 EOF
+  tags {
+    type = "${var.type}"
+  }
 }
 
 resource "aws_iam_policy" "policy" {
