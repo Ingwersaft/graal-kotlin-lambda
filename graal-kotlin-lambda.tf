@@ -27,6 +27,7 @@ output "aws-s3-sync-command" {
 resource "aws_s3_bucket" "files" {
   bucket = "${var.basename}"
   acl = "private"
+  force_destroy = true
   tags {
     type = "${var.type}"
   }
