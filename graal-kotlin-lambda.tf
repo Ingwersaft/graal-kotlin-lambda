@@ -15,9 +15,9 @@ variable "basename" {
   default = "graal-kotlin-lambda"
 }
 
-output "ssh" {
-  value = "ssh ec2-user@${aws_instance.build-instance.public_ip}"
-}
+//output "ssh" {
+//  value = "ssh ec2-user@${aws_instance.build-instance.public_ip}"
+//}
 output "bucket" {
   value = "s3://${aws_s3_bucket.files.bucket}"
 }

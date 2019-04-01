@@ -1,0 +1,25 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - echo "install step running on..."
+      - echo "running commit $CODEBUILD_SOURCE_VERSION"
+      - yum -y install git java-1.8.0-openjdk-devel gcc gcc-c++ glibc-devel zlib-devel zlib
+      - echo "install step done!"
+  pre_build:
+    commands:
+      - echo "pre_build step"
+      - chmod +x gradlew
+  build:
+    commands:
+      - ./gradlew packageLambda
+      - ls -lah
+  #      - aws s3 sync --delete src/main/web ${S3_BUCKET}
+  #      - aws s3 cp build/bundle/main.bundle.js ${S3_BUCKET}
+  post_build:
+    commands:
+      - echo "post_build step"
+      - printenv
+      - |-
+        curl -d "{\"text\": \"Just Build ${CODEBUILD_SOURCE_VERSION} triggered by ${CODEBUILD_INITIATOR} with Status: ${CODEBUILD_BUILD_SUCCEEDING}\"}" ${SLACK_WEBHOOK}
+#      - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths "/*"
