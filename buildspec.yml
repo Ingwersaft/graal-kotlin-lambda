@@ -1,4 +1,7 @@
 version: 0.2
+cache:
+  paths:
+    - '~/.gradle/caches'
 phases:
   install:
     commands:
