@@ -4,7 +4,7 @@ phases:
     commands:
       - echo "install step running on..."
       - echo "running commit $CODEBUILD_SOURCE_VERSION"
-      - apt-get install git java-1.8.0-openjdk-devel gcc gcc-c++ glibc-devel zlib-devel zlib
+      - apt-get install gcc g++ glibc-devel zlib-devel zlib
       - echo "install step done!"
   pre_build:
     commands:
