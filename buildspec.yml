@@ -2,6 +2,9 @@ version: 0.2
 cache:
   paths:
     - '~/.gradle/caches'
+    - '.gradle/'
+    - 'build/'
+    - '.terraform/'
 phases:
   install:
     commands:
@@ -24,6 +27,7 @@ phases:
       - ./gradlew packageLambda
       - ls -lah build/dist
       - aws s3 sync build/dist ${S3_BUCKET}
+      - terraform init -input=false
       - terraform apply -input=false
   post_build:
     commands:
