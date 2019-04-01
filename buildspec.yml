@@ -20,12 +20,11 @@ phases:
     commands:
       - ./gradlew packageLambda
       - ls -lah build/dist
-  #      - aws s3 sync --delete src/main/web ${S3_BUCKET}
-  #      - aws s3 cp build/bundle/main.bundle.js ${S3_BUCKET}
+      - aws s3 sync build/dist ${S3_BUCKET}
+      - terraform.exe apply -input=false
   post_build:
     commands:
       - echo "post_build step"
       - printenv
       - |-
         curl -d "{\"text\": \"Just Build ${CODEBUILD_SOURCE_VERSION} triggered by ${CODEBUILD_INITIATOR} with Status: ${CODEBUILD_BUILD_SUCCEEDING}\"}" ${SLACK_WEBHOOK}
-#      - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths "/*"

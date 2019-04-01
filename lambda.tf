@@ -1,7 +1,6 @@
 resource "aws_lambda_function" "test_lambda" {
   s3_bucket = "${aws_s3_bucket.files.bucket}"
-  s3_key = "lambda-dummy.zip"
-  // only used for lambda creation, actual lambda will be deployed by codebuild
+  s3_key = "graal-lambda.zip"
   function_name = "${var.basename}-lambda"
   role = "${aws_iam_role.iam_for_lambda.arn}"
   handler = "com.not.Needed"
