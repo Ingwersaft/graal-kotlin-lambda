@@ -13,7 +13,7 @@ phases:
   build:
     commands:
       - ./gradlew packageLambda
-      - ls -lah
+      - ls -lah build/graal
   #      - aws s3 sync --delete src/main/web ${S3_BUCKET}
   #      - aws s3 cp build/bundle/main.bundle.js ${S3_BUCKET}
   post_build:

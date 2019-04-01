@@ -15,9 +15,6 @@ variable "basename" {
   default = "graal-kotlin-lambda"
 }
 
-//output "ssh" {
-//  value = "ssh ec2-user@${aws_instance.build-instance.public_ip}"
-//}
 output "bucket" {
   value = "s3://${aws_s3_bucket.files.bucket}"
 }
@@ -31,6 +28,12 @@ resource "aws_s3_bucket" "files" {
   tags {
     type = "${var.type}"
   }
+}
+resource "aws_s3_bucket_object" "dummy-zip" {
+  bucket = "${aws_s3_bucket.files.bucket}"
+  key = "lambda-dummy.zip"
+  source = "lambda-dummy.zip"
+  etag = "${md5(file("lambda-dummy.zip"))}"
 }
 resource "aws_key_pair" "ec2key" {
   key_name = "mauer-key-${var.basename}"

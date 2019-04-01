@@ -19,7 +19,8 @@ resource "aws_codebuild_project" "build" {
   }
 
   cache {
-    type = "NO_CACHE"
+    type = "S3"
+    location = "${aws_s3_bucket.files.bucket}"
   }
 
   environment {
