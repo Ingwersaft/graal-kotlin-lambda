@@ -8,6 +8,9 @@ terraform {
     region = "eu-central-1"
   }
 }
+data "aws_s3_bucket" "state-bucket" {
+  bucket = "terraform-state-kesselring"
+}
 variable "type" {
   default = "graal-kotlin-lambda"
 }
