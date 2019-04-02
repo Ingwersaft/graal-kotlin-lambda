@@ -40,4 +40,12 @@ fun main() {
     }
 }
 
+
 private fun HttpEntity.s(): String? = EntityUtils.toString(this)
+
+data class Todo(
+    val userID: Long,
+    val id: Long,
+    val title: String,
+    val completed: Boolean
+)
