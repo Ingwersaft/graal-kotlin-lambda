@@ -16,4 +16,7 @@ also used: gradle + terraform
  * [A simple native HTTP server with GraalVM](http://melix.github.io/blog/2019/03/simple-http-server-graal.html)
  * [HttpServer.kt](https://github.com/melix/graal-simple-httpserver/blob/master/http-kotlin/src/main/kotlin/HttpServer.kt)
  * [palantir/gradle-graal](https://github.com/palantir/gradle-graal)
- 
+
+## tipps
+ * compute_type = "BUILD_GENERAL1_SMALL" keeps crashing, possible because it needs more RAM ->  BUILD_GENERAL1_MEDIUM
+ * Maybe you forgot to apply terraform?!
