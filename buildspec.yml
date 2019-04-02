@@ -4,19 +4,12 @@ cache:
     - '~/.gradle/caches'
     - '.gradle/'
     - 'build/'
-    - '.terraform/'
 phases:
   install:
     commands:
       - echo "install step running on..."
       - echo "running commit $CODEBUILD_SOURCE_VERSION"
-      - echo "installing build-essential unzip"
       - apt-get install build-essential
-      - echo "installing terraform"
-      - wget -q https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
-      - unzip terraform_0.11.13_linux_amd64.zip
-      - sudo install terraform /usr/local/bin/
-      - terraform --version
       - echo "install step done!"
   pre_build:
     commands:
@@ -26,9 +19,8 @@ phases:
     commands:
       - ./gradlew packageLambda
       - ls -lah build/dist
-      - aws s3 sync build/dist ${S3_BUCKET}
-      - terraform init -input=false
-      - terraform apply -input=false
+      - aws s3 sync build/dist ${S3_BUCKET_URL}
+      - aws lambda update-function-code --function-name $FUNCTION_NAME --s3-bucket $S3_BUCKET --s3-key $S3_KEY
   post_build:
     commands:
       - echo "post_build step"

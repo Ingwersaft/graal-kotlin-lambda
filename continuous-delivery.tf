@@ -30,7 +30,19 @@ resource "aws_codebuild_project" "build" {
 
     environment_variable {
       "name" = "S3_BUCKET"
+      "value" = "${aws_s3_bucket.files.bucket}"
+    }
+    environment_variable {
+      "name" = "S3_BUCKET_URL"
       "value" = "s3://${aws_s3_bucket.files.bucket}"
+    }
+    environment_variable {
+      "name" = "S3_KEY"
+      "value" = "graal-lambda.zip"
+    }
+    environment_variable {
+      "name" = "FUNCTION_NAME"
+      "value" = "${aws_lambda_function.test_lambda.function_name}"
     }
     environment_variable {
       "name" = "SLACK_WEBHOOK"

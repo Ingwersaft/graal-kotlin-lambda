@@ -44,9 +44,7 @@ resource "aws_iam_role_policy" "codebuild_policy" {
       ],
       "Resource": [
         "${aws_s3_bucket.files.arn}",
-        "${aws_s3_bucket.files.arn}/*",
-        "${data.aws_s3_bucket.state-bucket.arn}",
-        "${data.aws_s3_bucket.state-bucket.arn}/*"
+        "${aws_s3_bucket.files.arn}/*"
       ]
     }
   ]
