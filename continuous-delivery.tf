@@ -24,7 +24,7 @@ resource "aws_codebuild_project" "build" {
   }
 
   environment {
-    compute_type = "BUILD_GENERAL1_SMALL"
+    compute_type = "BUILD_GENERAL1_MEDIUM"
     image = "aws/codebuild/java:openjdk-8"
     type = "LINUX_CONTAINER"
 
