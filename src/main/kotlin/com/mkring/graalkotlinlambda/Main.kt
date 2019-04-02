@@ -29,7 +29,7 @@ fun main() {
             it.close()
 
             httpClient.execute(HttpPost("http://$lambdaRuntimeApi/2018-06-01/runtime/invocation/$awsRequestId/response").also {
-                it.entity = StringEntity("SUCCESS")
+                it.entity = StringEntity("SUCCESS2")
             }).also {
                 println("it.statusLine=${it.statusLine}")
                 EntityUtils.consume(it.entity)
