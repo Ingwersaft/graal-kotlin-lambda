@@ -8,7 +8,15 @@ also used: gradle + terraform
 - [x] create http client for lambda runtime interface (http + json parsing)
 - [x] implement lambda runtime interface
 - [x] terraform lambda using graalvm image
-- [ ] replace manual ec2 build with codebuild from git repo and automatic lambda rollout
+- [x] replace manual ec2 build with codebuild from git repo and automatic lambda rollout
+
+## lambda creation
+Currently, the lambda function gets created by terraform. On a clean slate (no state), the creation would fail because 
+the expected zip won't be present inside the s3 bucket (no codebuild run yet). Therefore a fake zip will be used 
+during the lambda creation. The codebuild job will call `lambda:UpdateFunctionCode`.
+
+Alternatively, the codebuild job could also handle the creation of the function, if it is not yet created. 
+Both approaches aren't without flaw.
 
 ## links
  * [fighting-cold-startup-issues-for-your-kotlin-lambda-with-graalvm](https://medium.com/@mathiasdpunkt/fighting-cold-startup-issues-for-your-kotlin-lambda-with-graalvm-39d19b297730)
