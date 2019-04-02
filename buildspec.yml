@@ -18,8 +18,8 @@ phases:
   build:
     commands:
 #      - ./gradlew packageLambda --stacktrace
-      - ls -lah build/dist
-      - aws s3 sync build/dist ${S3_BUCKET_URL}
+#      - ls -lah build/dist
+#      - aws s3 sync build/dist ${S3_BUCKET_URL}
       - aws lambda update-function-code --function-name $FUNCTION_NAME --s3-bucket $S3_BUCKET --s3-key $S3_KEY
   post_build:
     commands:
