@@ -46,6 +46,15 @@ resource "aws_iam_role_policy" "codebuild_policy" {
         "${aws_s3_bucket.files.arn}",
         "${aws_s3_bucket.files.arn}/*"
       ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:UpdateFunctionCode"
+      ],
+      "Resource": [
+        "${aws_lambda_function.test_lambda.arn}"
+      ]
     }
   ]
 }
