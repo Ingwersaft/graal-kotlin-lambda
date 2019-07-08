@@ -5,7 +5,7 @@ variable "github-repo" {
   default = "graal-kotlin-lambda"
 }
 variable "slack-webhook" {
-  default = "https://hooks.slack.com/services/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"
+  default = "${var.slackhook}"
 }
 
 resource "aws_codebuild_project" "build" {
